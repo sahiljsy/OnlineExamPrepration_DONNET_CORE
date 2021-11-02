@@ -1,0 +1,72 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login Page";
+}
+<div class="container">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card" style="border-radius: 15px; box-shadow: 0 0 25px rgb(128 128 128)">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <center>
+                                    <img width="160px" height="170px" src="~/imgs/graduation-cap-34183.png" />
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <center>
+                                    <h2 style="font-family: 'Palatino Linotype'; font-weight: bolder">LOGIN </h2>
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <center>
+                                    <hr />
+                                </center>
+                            </div>
+                        </div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="UserName"></label>
+                                    <input asp-for="UserName" class="form-control" />
+                                    <span class="text-danger" asp-validation-for="UserName"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Password"></label>
+                                    <input asp-for="Password" class="form-control" />
+                                    <span class="text-danger" asp-validation-for="Password"></span>
+                                </div>
+
+                                <div class="m-1">
+                                    <a href="#">forgot password?</a>
+                                </div>
+
+                                <div class="m-1">
+                                    <center>
+                                        <label ID="successfullforget"></label>
+                                    </center>
+                                </div>
+
+                                <div class="form-group m-2" style="display: inline;">
+                                    <center>
+                                        <button class="btn btn-success m-1" height="40px" width="100px" type="submit">Login </button>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<UserModel>  signInManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -43,39 +44,53 @@
                                 ABOUT US
                             </a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                View User
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                Add User
-                            </a>
-                        </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
+                                    View User
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
+                                    Add User
+                                </a>
+                            </li>
+                        }
+
 
                     </ul>
                     <ul class="navbar-nav ml-auto">
+                        @if (signInManager.IsSignedIn(User))
+                        {
                         <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                Login
-                            </a>
+                            <form method="post" asp-controller="Account" asp-action="Logout">
+                                <button type="submit" class="nav-link btn btn-link active">
+                                    Logout
+                                </button>
+                            </form>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                Register
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                Logout
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                Hello, User
-                            </a>
-                        </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Display">
+                                    Hello, @User.Identity.Name
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">
+                                    Login
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">
+                                    Register
+                                </a>
+                            </li>
+                        }
+
+
                     </ul>
                 </div>
 
@@ -95,6 +110,6 @@
         </ul>
             <p class="text-center m-0" style="color: white; font-weight: bolder">© WDDN Project</p><br />
     </footer>
+    @RenderSection("Scripts", required: false)
 </body>
-@RenderSection("Scripts", required: false)
 </html>
