@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<UserModel>  signInManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -30,7 +31,7 @@
 
                         <li class="nav-item active">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                               HOME
+                                HOME
                             </a>
                         </li>
                         <li class="nav-item active">
@@ -38,39 +39,53 @@
                                 ABOUT US
                             </a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                View User
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                Add User
-                            </a>
-                        </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
+                                    View User
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
+                                    Add User
+                                </a>
+                            </li>
+                        }
+
 
                     </ul>
                     <ul class="navbar-nav ml-auto">
+                        @if (signInManager.IsSignedIn(User))
+                        {
                         <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                Login
-                            </a>
+                            <form method="post" asp-controller="Account" asp-action="Logout">
+                                <button type="submit" class="nav-link btn btn-link active">
+                                    Logout
+                                </button>
+                            </form>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                Register
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                Logout
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                Hello, User
-                            </a>
-                        </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Display">
+                                    Hello, @User.Identity.Name
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">
+                                    Login
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">
+                                    Register
+                                </a>
+                            </li>
+                        }
+
+
                     </ul>
                 </div>
 
@@ -88,10 +103,13 @@
             <li class="nav-item"><a href="Home.aspx" class="nav-link px-2" style="color: white">Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2" style="color: white">About</a></li>
         </ul>
-        <div >
+        <div>
             <p class="text-center" style="color: white; font-weight: bolder">© WDDN Project</p>
         </div>
     </footer>
-    @RenderSection("Scripts", required: false)
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: false)
+    }
 </body>
 </html>
