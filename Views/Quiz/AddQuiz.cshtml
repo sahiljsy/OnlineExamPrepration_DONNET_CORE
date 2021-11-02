@@ -1,0 +1,91 @@
+﻿<div class="container">
+    <h1>Create New Quiz</h1>
+    <hr />
+    <form method="post">
+        <div class="container ml-0 mr-0">
+
+            <div class="row">
+                <div class="col-4">
+                    <select class="form-select form-select-lg" style="width: 80%; overflow-y: hidden; height: 80%" id="ExamSelection">
+                        <option value="Jee">JEE</option>
+                        <option value="Neet">NEET</option>
+                        <option value="Gate">GATE</option>
+                    </select>
+                </div>
+                <div class="col-8">
+                    <div class="form-group">
+                        <input id="Easy" type="radio" name="Level" value="Easy" checked /><label for="Easy" class="mr-4">Easy</label>
+                        <input id="Medium" type="radio" name="Level" value="Medium" /><label for="Medium" class="mr-4">Medium</label>
+                        <input id="Hard" type="radio" name="Level" value="Hard" /><label for="Hard" class="mr-4">Hard</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label><b>Question</b></label>
+                    <textarea id="Question" rows="2" style="width:100%"></textarea>
+                    <br />
+                </div>
+            </div>
+        </div><br />
+        <div class="row mb-4">
+            <div class="col-5">
+                <div class="form-group">
+                    Option A.
+                    <input id="A" type="text" class="ml-2" style="width:50%" />
+                    <br />
+                </div>
+            </div>
+
+            <div class="col-5">
+                <div class="form-group">
+                    Option B.
+                    <input id="B" type="text" class="ml-2" style="width:50%" />
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-5">
+                <div class="form-group">
+                    Option C.
+                    <input id="C" type="text" class="ml-2" style="width:50%" />
+                    <br />
+                </div>
+            </div>
+
+            <div class="col-5">
+                <div class="form-group">
+                    Option D.
+                    <input id="D" type="text" class="ml-2" style="width:50%" />
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label>ANSWER</label>
+                    <input id="ans" type="text" style="width: 90%" />
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="form-group">
+                    <label>Solution</label>
+                    <textarea id="sol" rows="2" style="width:100%"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group" style="display: inline;">
+                    <input id="Submit" type="submit" value="Submit" class="btn btn-success mr-5" style="width:100px; height:45px" />
+                    <input id="Cancel" type="button" value="Cancel" class="btn btn-danger mr-5" style="width: 100px; height: 45px" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

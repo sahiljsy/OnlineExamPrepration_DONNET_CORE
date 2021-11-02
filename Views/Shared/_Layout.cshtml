@@ -10,6 +10,11 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.table').prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -30,7 +35,7 @@
 
                         <li class="nav-item active">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                               HOME
+                                HOME
                             </a>
                         </li>
                         <li class="nav-item active">
@@ -83,15 +88,13 @@
         </main>
     </div>
     <br />
-    <footer style="background-color: indigo;">
+    <footer style="background-color: indigo;" class="m-0">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="Home.aspx" class="nav-link px-2" style="color: white">Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2" style="color: white">About</a></li>
         </ul>
-        <div >
-            <p class="text-center" style="color: white; font-weight: bolder">© WDDN Project</p>
-        </div>
+            <p class="text-center m-0" style="color: white; font-weight: bolder">© WDDN Project</p><br />
     </footer>
-    @RenderSection("Scripts", required: false)
 </body>
+@RenderSection("Scripts", required: false)
 </html>
