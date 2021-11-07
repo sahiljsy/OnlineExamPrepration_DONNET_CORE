@@ -7,10 +7,14 @@
     <title>@ViewData["Title"] - OnlineExamPrepration</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
 </head>
 <body>
     <header>
@@ -39,16 +43,16 @@
                                 ABOUT US
                             </a>
                         </li>
-                        @if (signInManager.IsSignedIn(User))
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {
                             <li class="nav-item active">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                    View User
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="DisplayAll">
+                                    All User
                                 </a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
-                                    Add User
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="UserRoleList">
+                                    Manage User
                                 </a>
                             </li>
                         }
@@ -65,11 +69,10 @@
                                 </button>
                             </form>
                         </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Display">
-                                    Hello, @User.Identity.Name
-                                </a>
-                            </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-action="Display" asp-controller="Account">Hello, @User.Identity.Name</a>
+                           
+                        </li>
                         }
                         else
                         {

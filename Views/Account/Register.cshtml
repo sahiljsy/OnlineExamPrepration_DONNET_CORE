@@ -4,7 +4,7 @@
     ViewData["Title"] = "SignUp Page";
 } 
 <div class="container">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <div class="card" style="border-radius: 15px; box-shadow: 0 0 25px rgb(128 128 128)">
@@ -16,7 +16,6 @@
                                 </center>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col">
                                 <center>
@@ -52,13 +51,13 @@
                         </div>
 
                         <div class="row">
-                            @*<div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Mobile_No"></label>
-                    <input asp-for="Mobile_No" class="form-control" />
-                    <span class="text-danger" asp-validation-for="Mobile_No"></span>
-                </div>
-            </div>*@
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber"></label>
+                                    <input asp-for="PhoneNumber" class="form-control" />
+                                <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                            </div>
+                        </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">

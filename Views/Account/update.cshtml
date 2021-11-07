@@ -1,0 +1,100 @@
+﻿@model UserEditViewModel
+
+@{
+    ViewData["Title"] = "Update Details Page";
+    var photoPath = "~/ProfilePic/" + (Model.ExistingPath ?? "UsersDetails.png");
+}
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ExistingPath" />
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card" style="border-radius: 15px; box-shadow: 0 0 25px rgb(128 128 128)">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <center>
+                                    <img width="200px" height="200px" src="@photoPath" asp-append-version="true" />
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <center>
+                                    <h2 style="font-family: 'Palatino Linotype'; font-weight: bolder">Update Information </h2>
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <center>
+                                    <hr />
+                                </center>
+                            </div>
+                        </div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="UserName"></label>
+                                    <input asp-for="UserName" class="form-control" value="@Model.UserName" />
+                                    <span class="text-danger" asp-validation-for="UserName"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="PhoneNumber"></label>
+                                        <input asp-for="PhoneNumber" class="form-control" />
+                                        <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                                    </div>
+                            </div>
+                         </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label asp-for="ProfilePicture" class="control-label"></label>
+                                    <div class="custom-file">
+                                        <input asp-for="ProfilePicture" class="form-control custom-file-input">
+                                        <label class="custom-file-label">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Email"></label>
+                                        <input asp-for="Email" class="form-control" value="@Model.Email" disabled />
+                                        <span class="text-danger" asp-validation-for="Email"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-2">
+                                    <input type="submit" class="btn btn-success" value="Update" />
+                                </div>
+                                <div class="col-3">
+                                    <a asp-action="Display" asp-controller="Account" class="btn btn-danger">Cancel</a>
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var filename = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(filename);
+            });
+        })
+    </script>
+}

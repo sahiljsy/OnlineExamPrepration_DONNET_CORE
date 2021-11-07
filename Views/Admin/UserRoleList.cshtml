@@ -1,0 +1,29 @@
+﻿@model IEnumerable<IdentityRole>
+
+@{
+    ViewData["Title"] = "User Role";
+}
+
+
+<div class="container">
+
+    @foreach (var role in Model)
+    {
+        <div class="row m-4">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        Role ID: @role.Id
+                    </div>
+                    <div class="card-body">
+                        <h5> @role.Name</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-success" asp-action="EditRole" asp-controller="Admin" asp-route-id="@role.Id">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

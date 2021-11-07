@@ -28,8 +28,12 @@ namespace OnlineExamPrepration
         {
             services.AddDbContextPool<AppDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-            services.AddIdentity<UserModel, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<UserModel, IdentityRole>(options =>
+                options.SignIn.RequireConfirmedEmail = true
+            ).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders() ;
             services.AddControllersWithViews();
+            services.Configure<MailSetting>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, MailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,13 +42,16 @@ namespace OnlineExamPrepration
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+                
             }
+            app.UseStatusCodePagesWithReExecute("/Error/{0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
