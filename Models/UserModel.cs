@@ -11,6 +11,5 @@ namespace OnlineExamPrepration.Models
     {
         public string Profile_pic { get; set; }
         public DateTime DOB { get; set; }
-
     }
 }

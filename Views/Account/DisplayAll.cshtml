@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Display All";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 mx-auto">
+            <div class="card" style="border-radius: 15px; box-shadow: 0 0 25px rgb(128 128 128)">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <img src="~/ProfilePic/UsersDetails.png" width="160px" height="175px" />
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <h2 style="font-family: 'Palatino Linotype'; font-weight: bolder">All Users </h2>
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <hr />
+                            </center>
+                        </div>
+                    </div>
+
+                    <div style="width:90%; margin:0 auto;">
+                        <table id="example" class="table table-responsive table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>userName</th>
+                                    <th>email</th>
+                                    <th>phoneNumber</th>
+                                    <th>dob</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#example").DataTable({
+                "processing": true, // for show progress bar    
+                "serverSide": true, // for process server side    
+                "filter": true, // this is for disable filter (search box)    
+                "orderMulti": false, // for disable multiple column at once    
+                "ajax": {
+                    "url": "https://localhost:44370/Account/DisplayAll",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columnDefs": [{
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }],
+                "columns": [
+                    { "data": "id", "name": "id", "autoWidth": true },
+                    { "data": "userName", "name": "userName", "autoWidth": true },
+                    { "data": "email", "name": "Email", "autoWidth": true },
+                    { "data": "phoneNumber", "name": "phoneNumber", "autoWidth": true },
+                    { "data": "dob", "name": "dob", "autoWidth": true },
+                ]
+            });
+        });
+    </script>
+}

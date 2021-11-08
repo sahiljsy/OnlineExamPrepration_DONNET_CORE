@@ -1,10 +1,13 @@
-﻿@model RegisterViewModel
+﻿@model UserEditViewModel
 
 @{
-    ViewData["Title"] = "SignUp Page";
-} 
+    ViewData["Title"] = "Update Details Page";
+    var photoPath = "~/ProfilePic/" + (Model.ExistingPath ?? "UsersDetails.png");
+}
 <div class="container">
     <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ExistingPath" />
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <div class="card" style="border-radius: 15px; box-shadow: 0 0 25px rgb(128 128 128)">
@@ -12,14 +15,15 @@
                         <div class="row">
                             <div class="col">
                                 <center>
-                                    <img src="~/imgs/signuplogo.png" width="200px" height="125px" />
+                                    <img width="200px" height="200px" src="@photoPath" asp-append-version="true" />
                                 </center>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col">
                                 <center>
-                                    <h2 style="font-family: 'Palatino Linotype'; font-weight: bolder">SIGN-UP </h2>
+                                    <h2 style="font-family: 'Palatino Linotype'; font-weight: bolder">Update Information </h2>
                                 </center>
                             </div>
                         </div>
@@ -32,54 +36,25 @@
                             </div>
                         </div>
                         <div asp-validation-summary="All" class="text-danger"></div>
+                        
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="Email"></label>
-                                    <input asp-for="Email" class="form-control" />
-                                    <span class="text-danger" asp-validation-for="Email"></span>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="DOB"></label>
-                                    <input asp-for="DOB" class="form-control" />
-                                    <span class="text-danger" asp-validation-for="DOB"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="PhoneNumber"></label>
-                                    <input asp-for="PhoneNumber" class="form-control" />
-                                <span class="text-danger" asp-validation-for="PhoneNumber"></span>
-                            </div>
-                        </div>
-
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="UserName"></label>
-                                    <input asp-for="UserName" class="form-control" />
+                                    <input asp-for="UserName" class="form-control" value="@Model.UserName" />
                                     <span class="text-danger" asp-validation-for="UserName"></span>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label asp-for="Password"></label>
-                                    <input asp-for="Password" class="form-control" />
-                                    <span class="text-danger" asp-validation-for="Password"></span>
-                                </div>
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="PhoneNumber"></label>
+                                        <input asp-for="PhoneNumber" class="form-control" />
+                                        <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                                    </div>
                             </div>
-                        </div>
-
+                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-6">
                                 <div class="form-group">
                                     <label asp-for="ProfilePicture" class="control-label"></label>
                                     <div class="custom-file">
@@ -88,10 +63,25 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <center>
-                            <input type="submit" class="btn btn-success" value="SignUP" />
-                        </center>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Email"></label>
+                                        <input asp-for="Email" class="form-control" value="@Model.Email" disabled />
+                                        <span class="text-danger" asp-validation-for="Email"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-2">
+                                    <input type="submit" class="btn btn-success" value="Update" />
+                                </div>
+                                <div class="col-3">
+                                    <a asp-action="Display" asp-controller="Account" class="btn btn-danger">Cancel</a>
+
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -107,4 +97,4 @@
             });
         })
     </script>
- }
+}

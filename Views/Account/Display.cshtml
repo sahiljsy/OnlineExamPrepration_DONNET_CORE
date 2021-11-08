@@ -1,0 +1,80 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "Details Page";
+    var photoPath = "~/ProfilePic/" + (Model.Profile_pic ?? "UsersDetails.png");
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 mx-auto">
+            <div class="card" style="border-radius: 15px; box-shadow: 0 0 25px rgb(128 128 128)">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <img style="border-radius: 120px; width:175px; height:175px;" src="@photoPath" asp-append-version="true" />
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <h2 style="font-family: 'Palatino Linotype'; font-weight: bolder">Your Details </h2>
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <hr />
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 m-2">
+                            <div class="form-group">
+                                <label style="width: 150px; font-size:large">UserName: </label>
+                                <label ID="FullName" style="font-size:large">@Model.UserName</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 m-2">
+                            <div class="form-group">
+                                <label style="width: 150px; font-size:large">EMAIL: </label>
+                                <label ID="Email" style="font-size:large" runat="server">@Model.Email</label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 m-2">
+                            <div class="form-group">
+                                <label style="width: 150px; font-size:large">DATE OF BIRTH: </label>
+
+                                <label ID="Dob" style="font-size:large" runat="server">@Model.DOB.ToShortDateString()</label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 m-2">
+                            <div class="form-group">
+                                <label style="width: 150px; font-size:large">Contact No: </label>
+
+                                <label ID="Dob" style="font-size:large" runat="server">@Model.PhoneNumber</label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <center>
+                        <a asp-action="Update" class="btn btn-success">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
