@@ -1,0 +1,35 @@
+﻿@model PaperViewModel
+<div class="container">
+    <h1>Delete Question Papers</h1>
+    <hr />
+    <form asp-controller="Paper" asp-action="DeletePaper">
+        <div class="container">
+            <p> Delete a paper with a selected year.</p>
+            <p style="color:red;"><strong>Please Note:</strong> </p>
+            <p>After pressing the "Delete" button, the paper will be deleted from the list of papers available and user will not be able to download the paper.</p><br />
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <select class="form-select form-select-lg" style="width: 80%; overflow-y: hidden; height: 34px" asp-for="Exam" asp-items="Html.GetEnumSelectList<exam>()">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <input name="year" type="number" value="2016" min="1900" max="2021" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <div class="form-group" style="display: inline;">
+                        <input id="Upload" type="submit" value="Upload" class="btn btn-success" />
+                        <a class="btn btn-warning" asp-area="" asp-controller="Paper" asp-action="AllPapers">
+                            Cancel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

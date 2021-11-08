@@ -1,0 +1,48 @@
+﻿@model PaperViewModel
+
+@{ 
+    ViewBag.Title = "Add Paper";
+}
+<div class="container">
+    <h1>Add Question Papers</h1>
+    <hr />
+    <form asp-controller="Paper" asp-action="AddPaper" enctype="multipart/form-data">
+        <div class="container">
+            <p> Add a paper with a selected year.</p>
+            <p style="color:red;"><strong>Please Note:</strong> </p>
+            <p>After pressing the "Upload" button, the paper will to added to list of papers available and user will be able to download the paper.</p>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <select class="form-select form-select-lg" style="width: 80%; overflow-y: hidden; height: 34px" asp-for="Exam" asp-items="Html.GetEnumSelectList<exam>()">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <input type="number" id="Year" class="form-control" asp-for="Year"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group row">
+                <div class="col-sm-10">
+                    <div class="custom-file">
+                        <input asp-for="Paper" class="form-control form-control-lg" />
+                        <span asp-validation-for="Paper" class="text-danger"></span>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group" style="display: inline;">
+                    <input id="Upload" type="submit" value="Upload" class="btn btn-success" />
+                    <a class="btn btn-warning" asp-area="" asp-controller="Paper" asp-action="AllPapers">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

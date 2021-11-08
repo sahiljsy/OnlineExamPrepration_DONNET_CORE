@@ -30,6 +30,8 @@ namespace OnlineExamPrepration
                 options => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             services.AddIdentity<UserModel, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             services.AddControllersWithViews();
+            services.AddTransient<IQuizRepository, SqlQuizRepository>();
+            services.AddTransient<IPaperRepository, SqlPaperRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

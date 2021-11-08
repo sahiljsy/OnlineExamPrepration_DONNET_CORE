@@ -13,6 +13,8 @@ namespace OnlineExamPrepration.Models
         {
 
         }
+        public DbSet<QuizViewModel> QuizViewModels { get; set; }
+        public DbSet<Paper> Papers { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

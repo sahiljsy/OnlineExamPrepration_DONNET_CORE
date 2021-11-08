@@ -1,0 +1,45 @@
+﻿@model IEnumerable<OnlineExamPrepration.Models.Paper>
+<div class="container">
+    <h1 style="display:inline-block">
+        PREVIOUS YEAR PAPER
+    </h1>
+    <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Paper" asp-action="AddPaper" Style="float: right">
+        ADD PAPER
+    </a>
+    <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Paper" asp-action="DeletePaper" Style="float: right">
+        DELETE PAPER
+    </a><hr/>
+        <ItemTemplate>
+            <table class="table table-bordered table-sm my-2">
+                <thead>
+                    <tr>
+                        <td>
+                            <div class="py-2 h5" style="width: 35%;"><b> EXAMINATION</b></div>
+                        </td>
+                        <td>
+                            <div class="py-2 h5" style="width: 30%;"><b> YEAR</b></div>
+                        </td>
+                        <td>
+                            <div class="py-2 h5" style="width: 35%;"><b> DOWNLOAD FILE</b></div>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ppr in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="py-2 h5"> @ppr.Exam</div>
+                            </td>
+                            <td>
+                                <div class="py-2 h5"> @ppr.Year</div>
+                            </td>
+                            <td>
+                                <div class="py-2 h5"> @Html.ActionLink("Download", "DownloadFile", new { fileName = ppr.PaperPath })</div>
+</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>     
+        </ItemTemplate>
+</div>

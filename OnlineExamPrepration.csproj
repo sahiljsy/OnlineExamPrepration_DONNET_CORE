@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\Papers\" />
     <Folder Include="wwwroot\ProfilePic\" />
   </ItemGroup>
 

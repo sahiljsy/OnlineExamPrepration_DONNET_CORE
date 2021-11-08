@@ -1,0 +1,34 @@
+﻿@model IEnumerable<OnlineExamPrepration.Models.QuizViewModel>
+<div class="container">
+    <h1 style="display: inline-block">Congratulations you scored:  @ViewBag.score marks</h1>
+    <hr />
+    <h3>Correct Solution is displayed below:</h3><hr/>
+        <ItemTemplate>
+            <table class="table table-bordered table-sm my-2">
+                <tbody>
+                    @foreach (var quiz in Model)
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <div class="py-2 h5"><b>Q. @quiz.Question</b></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3 choice">
+                                    <label class="options">
+                                        Ans: @quiz.Answer
+                                    </label><br />
+                                </div >
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </ItemTemplate>
+</div>
+
+<script>
+
+</script>
