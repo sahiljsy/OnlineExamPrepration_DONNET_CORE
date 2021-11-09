@@ -1,5 +1,7 @@
 ﻿@model QuizViewModel
-
+@{
+    ViewData["Title"] = "Add Quiz";
+}
 <div class="container">
     <h1>Create New Quiz</h1>
     <hr />
@@ -12,9 +14,9 @@
                 </div>
                 <div class="col-8">
                     <div class="form-group">
-                        <input id="Easy" type="radio" name="Level" value="Easy" checked asp-for="Level"/><label for="Easy" asp-for="Level" class="mr-4">Easy</label>
-                        <input id="Medium" type="radio" name="Level" value="Medium" asp-for="Level"/><label for="Medium" asp-for="Level" class="mr-4">Medium</label>
-                        <input id="Hard" type="radio" name="Level" value="Hard" asp-for="Level"/><label for="Hard" asp-for="Level" class="mr-4">Hard</label>
+                        <input id="Easy" type="radio" name="Level" value="Easy" checked asp-for="Level" /><label for="Easy" asp-for="Level" class="mr-4">Easy</label>
+                        <input id="Medium" type="radio" name="Level" value="Medium" asp-for="Level" /><label for="Medium" asp-for="Level" class="mr-4">Medium</label>
+                        <input id="Hard" type="radio" name="Level" value="Hard" asp-for="Level" /><label for="Hard" asp-for="Level" class="mr-4">Hard</label>
                     </div>
                 </div>
             </div>
@@ -36,7 +38,7 @@
                     Option A.
                     <input id="A" type="text" class="ml-2" style="width:50%" asp-for="OptionA" /><br />
                     <span asp-validation-for="OptionA" class="text-danger"></span>
-                    
+
                 </div>
             </div>
 
@@ -45,7 +47,7 @@
                     Option B.
                     <input id="B" type="text" class="ml-2" style="width:50%" asp-for="OptionB" /><br />
                     <span asp-validation-for="OptionB" class="text-danger"></span>
-                    
+
                 </div>
             </div>
         </div>
@@ -55,7 +57,7 @@
                     Option C.
                     <input id="C" type="text" class="ml-2" style="width:50%" asp-for="OptionC" /><br />
                     <span asp-validation-for="OptionC" class="text-danger"></span>
-                    
+
                 </div>
             </div>
 
@@ -64,7 +66,7 @@
                     Option D.
                     <input id="D" type="text" class="ml-2" style="width:50%" asp-for="OptionD" /><br />
                     <span asp-validation-for="OptionD" class="text-danger"></span>
-                    
+
                 </div>
             </div>
         </div>
@@ -88,7 +90,7 @@
             <div class="col-9">
                 <div class="form-group" style="display: inline;">
                     <input id="Submit" type="submit" value="Submit" class="btn btn-success mr-5" style="width:100px; height:45px" />
-                    <a asp-controller="Quiz" asp-action="ViewQuiz" class="btn btn-danger mr-5" style="width: 100px; height: 45px" >
+                    <a asp-controller="Home" asp-action="Display" class="btn btn-danger mr-5" style="width: 100px; height: 45px">
                         Cancel
                     </a>
                 </div>

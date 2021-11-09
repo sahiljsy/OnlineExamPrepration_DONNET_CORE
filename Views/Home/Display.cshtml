@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Display";
+}
+<div class="container">
+    <h1>QUIZ SECTION</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4 my-5">
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-header">
+                        <a asp-controller="Quiz" asp-action="JEE">
+                            <center><img src="~/imgs/jee.jpg" style="height: 250px; width: 290px;" /></center>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <center>
+                            <h1>JEE</h1>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 my-5">
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-header">
+                        <a asp-controller="Quiz" asp-action="NEET">
+                            <center><img src="~/imgs/neet.jpg" style="height: 250px; width: 290px;" /></center>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <center>
+                            <h1>NEET</h1>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 my-5">
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-header">
+                        <a asp-controller="Quiz" asp-action="GATE">
+                            <center><img src="~/imgs/gate.png" style="height: 250px; width: 270px;" /></center>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <center>
+                            <h1>GATE</h1>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <h1 style="margin-top: 50px">PREVIOUS YEAR PAPERS</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4 my-5">
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-header">
+                        <a asp-controller="Paper" asp-action="AllPapers" asp-route-ex="JEE">
+                            <center><img src="~/imgs/jee.jpg" style="height: 250px; width: 290px;" /></center>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <center>
+                            <h1>JEE</h1>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 my-5">
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-header">
+                        <a asp-controller="Paper" asp-action="AllPapers" asp-route-ex="NEET">
+                            <center><img src="~/imgs/neet.jpg" style="height: 250px; width: 290px;" /></center>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <center>
+                            <h1>NEET</h1>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 my-5">
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-header">
+                        <a asp-controller="Paper" asp-action="AllPapers" asp-route-ex="GATE">
+                            <center><img src="~/imgs/gate.png" style="height: 250px; width: 270px;" /></center>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <center>
+                            <h1>GATE</h1>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

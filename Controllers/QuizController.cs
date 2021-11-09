@@ -100,11 +100,11 @@ namespace OnlineExamPrepration.Controllers
             return RedirectToAction("UpdateQuiz");
         }
 
-        public IActionResult DeleteQuiz(String id)
+        public IActionResult DeleteQuiz(int id)
         {
-            int Id = int.Parse(id);
-            _sqlQuizRepository.Delete(Id);
-            return RedirectToAction("Index", "Home");
+            //int Id = int.Parse(id);
+            _sqlQuizRepository.Delete(id);
+            return RedirectToAction("UpdateQuiz");
         }
 
         [HttpPost]
@@ -113,7 +113,7 @@ namespace OnlineExamPrepration.Controllers
             if(ModelState.IsValid)
             {
                 QuizViewModel newQuiz = _sqlQuizRepository.Add(quiz);
-                return RedirectToAction("JEE");
+                return RedirectToAction("UpdateQuiz");
             }
             return View();
         }

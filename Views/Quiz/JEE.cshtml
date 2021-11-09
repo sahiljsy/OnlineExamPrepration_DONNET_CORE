@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<OnlineExamPrepration.Models.QuizViewModel>
+@{
+    ViewData["Title"] = "Jee Quiz";
+}
 <div class="container">
     <h1 style="display: inline-block">MOCK QUIZ</h1>
     <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Quiz" asp-action="AddQuiz" Style="float: right">
@@ -17,6 +20,7 @@
     <hr />
     <form asp-controller="Quiz" asp-action="Validate">
         <input type="hidden" value=@Model.ElementAt(0).Level name="Level" />
+        <input type="hidden" value=@Model.ElementAt(0).Exam name="Exam" />
         <ItemTemplate>
             <table class="table table-bordered table-sm my-2">
                 <tbody>
@@ -31,22 +35,21 @@
                             <td class="align-top">
                                 <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3 choice">
                                     <label class="options">
-                                        <input name=@quiz.Id type="radio" value=@quiz.OptionA>&nbsp;&nbsp;@quiz.OptionA
+                                        <input name=@quiz.Id type="radio" value="@quiz.OptionA">&nbsp;&nbsp;@quiz.OptionA
                                     </label><br />
                                     <label class="options">
-                                        <input name=@quiz.Id type="radio" value=@quiz.OptionB>&nbsp;&nbsp;@quiz.OptionB
+                                        <input name=@quiz.Id type="radio" value="@quiz.OptionB">&nbsp;&nbsp;@quiz.OptionB
                                     </label><br />
                                     <label class="options">
-                                        <input name=@quiz.Id type="radio" value=@quiz.OptionC>&nbsp;&nbsp;@quiz.OptionC
+                                        <input name=@quiz.Id type="radio" value="@quiz.OptionC">&nbsp;&nbsp;@quiz.OptionC
                                     </label><br />
                                     <label class="options">
-                                        <input name=@quiz.Id type="radio" value=@quiz.OptionD>&nbsp;&nbsp;@quiz.OptionD
+                                        <input name=@quiz.Id type="radio" value="@quiz.OptionD">&nbsp;&nbsp;@quiz.OptionD
                                     </label>
                                 </div>
                                 <br />
                             </td>
                         </tr>
-
                     }
                 </tbody>
             </table>

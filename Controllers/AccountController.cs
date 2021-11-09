@@ -136,7 +136,7 @@ namespace OnlineExamPrepration.Controllers
         {
             if (signInManager.IsSignedIn(User))
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Display", "Home");
             }
             return View();
         }
@@ -162,7 +162,7 @@ namespace OnlineExamPrepration.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Display", "Home");
                     }
                 }
                 ModelState.AddModelError(string.Empty, "Invalid Login");

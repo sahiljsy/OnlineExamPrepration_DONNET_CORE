@@ -46,7 +46,7 @@
                     <ul class="navbar-nav me-auto">
 
                         <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="home">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Display">
                                 HOME
                             </a>
                         </li>
@@ -113,12 +113,12 @@
         </main>
     </div>
     <br />
-    <footer style="background-color: indigo;" class="m-0">
+    <footer style="background-color: indigo; bottom: 0; width: 100%;" class="m-0">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="Home.aspx" class="nav-link px-2" style="color: white">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2" style="color: white">About</a></li>
+            <li class="nav-item"><a asp-controller="Home" asp-action="Display" class="nav-link px-2" style="color: white">home</a></li>
+            <li class="nav-item"><a asp-controller="Home" asp-action="AboutUs" class="nav-link px-2" style="color: white">about</a></li>
         </ul>
-            <p class="text-center m-0" style="color: white; font-weight: bolder">© WDDN Project</p><br />
+            <p class="text-center m-0" style="color: white; font-weight: bolder">© wddn project</p><br />
     </footer>
     @RenderSection("Scripts", required: false)
 </body>

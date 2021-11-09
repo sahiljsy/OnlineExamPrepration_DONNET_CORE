@@ -19,9 +19,22 @@ namespace OnlineExamPrepration.Controllers
             _paperRepository = paperRepository;
             this.hostingEnvironment = hostingEnvironment;
         }
-        public IActionResult AllPapers()
+        [Route("Paper/AllPapers/{ex}")]
+        public IActionResult AllPapers(String ex)
         {
-            IEnumerable<Paper> model = _paperRepository.GetAllPapers();
+            IEnumerable<Paper> model = null;
+            if (ex == "JEE")
+            {
+                model = _paperRepository.GetJeePapers();
+            }
+            else if(ex == "NEET")
+            {
+                model = _paperRepository.GetNeetPapers();
+            }
+            else
+            {
+                model = _paperRepository.GetGatePapers();
+            }
             return View(model);
         }
         
@@ -52,7 +65,7 @@ namespace OnlineExamPrepration.Controllers
                 };
 
                 _paperRepository.AddPaper(newPaper);
-                return RedirectToAction("AllPapers");
+                return RedirectToAction("Display", "Home", new { area = "" });
             }
             return View();
         }
@@ -80,7 +93,7 @@ namespace OnlineExamPrepration.Controllers
             String Exam = Request.Form["Exam"];
             int year = int.Parse(Request.Form["year"]);
             _paperRepository.DeletePaper(Exam, year);
-            return RedirectToAction("AllPapers");       
+            return RedirectToAction("Display", "Home", new { area = "" });       
         }
     }
 }

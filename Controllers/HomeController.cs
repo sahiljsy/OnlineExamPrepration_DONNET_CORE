@@ -26,7 +26,10 @@ namespace OnlineExamPrepration.Controllers
             return View();
         }
 
-
+        public IActionResult Display()
+        {
+            return View();
+        }
 
         
     }

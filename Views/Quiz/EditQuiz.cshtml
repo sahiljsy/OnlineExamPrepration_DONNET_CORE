@@ -1,5 +1,7 @@
 ﻿@model QuizViewModel
-
+@{
+    ViewData["Title"] = "Edit Quiz";
+}
 <div class="container">
     <h1>Create New Quiz</h1>
     <hr />
@@ -88,8 +90,8 @@
             <div class="col-9">
                 <div class="form-group" style="display: inline;">
                     <input id="Submit" type="submit" value="Submit" class="btn btn-success mr-5" style="width:100px; height:45px" />
-                    <a asp-controller="Quiz" asp-action="UpdateQuiz" class="btn btn-danger mr-5" style="width: 100px; height: 45px">
-                        Cancel
+                    <a asp-controller="Quiz" asp-action="DeleteQuiz" asp-route-id="@Model.Id" class="btn btn-danger mr-5" style="width: 100px; height: 45px">
+                        Delete
                     </a>
                 </div>
             </div>

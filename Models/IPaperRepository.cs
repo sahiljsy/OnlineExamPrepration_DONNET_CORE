@@ -9,6 +9,8 @@ namespace OnlineExamPrepration.Models
     {
         Paper AddPaper(Paper paper);
         void DeletePaper(String Exam, int year);
-        IEnumerable<Paper> GetAllPapers();
+        IEnumerable<Paper> GetNeetPapers();
+        IEnumerable<Paper> GetGatePapers();
+        IEnumerable<Paper> GetJeePapers();
     }
 }

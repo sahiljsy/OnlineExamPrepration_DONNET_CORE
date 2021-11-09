@@ -42,9 +42,21 @@ namespace OnlineExamPrepration.Models
             context.SaveChanges();
         }
 
-        public IEnumerable<Paper> GetAllPapers()
+        public IEnumerable<Paper> GetNeetPapers()
         {
-            IEnumerable<Paper> list = from item in context.Papers orderby item.Exam select item;
+            IEnumerable<Paper> list = from item in context.Papers where item.Exam == exam.NEET orderby item.Year descending select item;
+            return list;
+        }
+
+        public IEnumerable<Paper> GetJeePapers()
+        {
+            IEnumerable<Paper> list = from item in context.Papers where item.Exam == exam.JEE orderby item.Year descending select item;
+            return list;
+        }
+
+        public IEnumerable<Paper> GetGatePapers()
+        {
+            IEnumerable<Paper> list = from item in context.Papers where item.Exam == exam.GATE orderby item.Year descending select item;
             return list;
         }
     }

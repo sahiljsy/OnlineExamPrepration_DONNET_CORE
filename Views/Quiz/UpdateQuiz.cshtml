@@ -1,19 +1,11 @@
-﻿<div class="container">
+﻿@{
+    ViewData["Title"] = "Update Quiz";
+}
+<div class="container">
     <h1>Edit Existing Quiz</h1>
-    @*<form asp-controller="Quiz" asp-action="Fetch">
-            <div class="row my-2 m-2">
-
-
-                <select class="form-select mr-2" style="width: 35%; height: 40px" id="ExamSelection">
-                    <option value="Jee">JEE</option>
-                    <option value="Neet">NEET</option>
-                    <option value="Gate">GATE</option>
-                </select>
-                <input id="Fetch" class="btn btn-success" type="submit" value="Fetch" style="width: 80px" />
-
-            </div>
-        </form>*@
     <hr />
+    <p>Here Exam notations are shown below:</p>
+    <p style="color:red;"><strong>0 - JEE,<br />1 - NEET<br />2 - GATE </strong> </p>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -32,7 +24,6 @@
                                 <th>Answer</th>
                                 <th>Solution</th>
                                 <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                     </table>
@@ -43,100 +34,40 @@
         <script>
 
 
-    $(document).ready(function() {
-        $("#example").DataTable({
-            "processing": true, // for show progress bar
-            "serverSide": true, // for process server side
-            "filter": true, // this is for disable filter (search box)
-            "orderMulti": false, // for disable multiple column at once
-            "ajax": {
-                "url": "/Quiz/LoadData",
-                "type": "POST",
-                "datatype": "json"
-            },
-            "columnDefs": [{
-                "targets": [0],
-                "visible": false,
-                "searchable": false
-            }],
-            "columns": [
-                { "data": "id", "name": "id", "autoWidth": true },
-                { "data": "exam", "name": "exam", "autoWidth": true },
-                { "data" : "level", "name": "level", "autoWidth": true},
-                { "data": "question", "name": "question", "autoWidth": true },             
-                { "data": "optionA", "name": "optionA", "autoWidth": true },
-                { "data": "optionB", "name": "optionB", "autoWidth": true },
-                { "data": "optionC", "name": "optionC", "autoWidth": true },
-                { "data": "optionD", "name": "optionD", "autoWidth": true },
-                { "data": "answer", "name": "answer", "autoWidth": true },
-                { "data": "solution", "name": "solution", "autoWidth": true },
-                {
-                    "render": function(data, type, full, meta) { return '<a class="btn btn-warning" href="/Quiz/EditQuiz/' + full.id + '">Edit</a>'; }
-                },
-                {
-                    data: null,
-                    render: function (data, type, row) {
-                        return "<a  class='btn btn-danger' onclick=DeleteData('" + row.id + "'); >Delete</a>";
-                    }
-                },
-            ]
+            $(document).ready(function () {
+                $("#example").DataTable({
+                    "processing": true, // for show progress bar
+                    "serverSide": true, // for process server side
+                    "filter": true, // this is for disable filter (search box)
+                    "orderMulti": false, // for disable multiple column at once
+                    "ajax": {
+                        "url": "/Quiz/LoadData",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "columnDefs": [{
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    }],
+                    "columns": [
+                        { "data": "id", "name": "id", "autoWidth": true },
+                        { "data": "exam", "name": "exam", "autoWidth": true },
+                        { "data": "level", "name": "level", "autoWidth": true },
+                        { "data": "question", "name": "question", "autoWidth": true },
+                        { "data": "optionA", "name": "optionA", "autoWidth": true },
+                        { "data": "optionB", "name": "optionB", "autoWidth": true },
+                        { "data": "optionC", "name": "optionC", "autoWidth": true },
+                        { "data": "optionD", "name": "optionD", "autoWidth": true },
+                        { "data": "answer", "name": "answer", "autoWidth": true },
+                        { "data": "solution", "name": "solution", "autoWidth": true },
+                        {
+                            "render": function (data, type, full, meta) { return '<a class="btn btn-warning" href="/Quiz/EditQuiz/' + full.id + '">Edit</a>'; }
+                        }
+                    ]
 
-        });
-    });
-
-
-function DeleteData(CustomerID) {
-    if (confirm("Are you sure you want to delete ...?")) {
-        Delete(CustomerID);
-    } else {
-        return false;
-    }
-}
-
-
-function Delete(CustomerID) {
-    var url = '@Url.Content("~/")' + "Quiz/DeleteQuiz";
-
-    $.post(url, { ID: CustomerID }
-        //function (data) {
-        //if (data) {
-        //    oTable = $('#example').DataTable();
-        //    oTable.draw();
-        //} else {
-        //    alert("Something Went Wrong!");
-        //}
-        //}
-    );
-}
-
-
-    //        function DeleteData(id) {
-
-    //            if (confirm("are you sure you want to delete ...?")) {
-    //                Delete(id);
-
-    //    } else {
-    //     return false;
-    // }
-    //}
-
-
-    //        function Delete(customerid) {
-    //            return true;
-    //    var url = "/Quiz/DeleteQuiz";
-
-    //    $.post(url, customerid, function(data) {
-    //        if (data) {
-    //            otable = $('#example').datatable();
-    //            otable.draw();
-    //        } else {
-    //            alert("something went wrong!");
-    //        }
-    //    });
-    //}
-
+                });
+            });
         </script>
-
-
     </div>
 </div>
