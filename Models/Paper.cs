@@ -15,9 +15,9 @@ namespace OnlineExamPrepration.Models
         public exam Exam { get; set; }
 
         [Required]
-        public int Year { get; set; }
+        public int ? Year { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Year Field is required.")]
         public String PaperPath { get; set; }
 
 

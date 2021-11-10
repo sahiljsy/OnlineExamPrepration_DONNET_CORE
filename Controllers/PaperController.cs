@@ -92,7 +92,11 @@ namespace OnlineExamPrepration.Controllers
 
             String Exam = Request.Form["Exam"];
             int year = int.Parse(Request.Form["year"]);
-            _paperRepository.DeletePaper(Exam, year);
+            string cnt = _paperRepository.DeletePaper(Exam, year);
+            if(cnt == "0")
+            {
+                return View("NoPaperFound");
+            }
             return RedirectToAction("Display", "Home", new { area = "" });       
         }
     }

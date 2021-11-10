@@ -31,6 +31,10 @@ namespace OnlineExamPrepration.Controllers
         {
             int Id = int.Parse(id);
             QuizViewModel model = _sqlQuizRepository.Get(Id);
+            if(model == null)
+            {
+                return View("NotFound");
+            }
             return View(model);
         }
 
@@ -96,8 +100,12 @@ namespace OnlineExamPrepration.Controllers
         [HttpPost]
         public IActionResult EditQuiz(QuizViewModel quizViewModel)
         {
-            var quiz = _sqlQuizRepository.Edit(quizViewModel);
-            return RedirectToAction("UpdateQuiz");
+            if(ModelState.IsValid)
+            {
+                var quiz = _sqlQuizRepository.Edit(quizViewModel);
+                return RedirectToAction("UpdateQuiz");
+            }
+            return View(quizViewModel);
         }
 
         public IActionResult DeleteQuiz(int id)
@@ -167,9 +175,5 @@ namespace OnlineExamPrepration.Controllers
             }
         }
 
-        public IActionResult Fetch()
-        {
-            return View("UpdateQuiz");
-        }
     }
 }

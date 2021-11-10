@@ -1,6 +1,6 @@
 ﻿@model PaperViewModel
 
-@{ 
+@{
     ViewBag.Title = "Add Paper";
 }
 <div class="container">
@@ -14,27 +14,35 @@
             <div class="row">
                 <div class="col-3">
                     <div class="form-group">
-                        <select class="form-select form-select-lg" style="width: 80%; overflow-y: hidden; height: 34px" asp-for="Exam" asp-items="Html.GetEnumSelectList<exam>()">
+                        <select class="form-control form-select-lg" style="width: 80%; overflow-y: hidden; height: 34px" asp-for="Exam" asp-items="Html.GetEnumSelectList<exam>()">
                         </select>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <input type="number" id="Year" class="form-control" asp-for="Year"/>
+                        <input type="number" id="Year" class="form-control" asp-for="Year" required />
                     </div>
                 </div>
             </div>
         </div>
         <hr />
         <div class="form-group row">
-                <div class="col-sm-10">
+            <div class="col-sm-10">
+                <div class="form-group">
+                    <label asp-for="Paper" class="control-label"></label>
                     <div class="custom-file">
-                        <input asp-for="Paper" class="form-control form-control-lg" />
+                        <input asp-for="Paper" class="form-control custom-file-input">
+                        <label class="custom-file-label">Choose file</label>
                         <span asp-validation-for="Paper" class="text-danger"></span>
                     </div>
                 </div>
+                @*<div class="custom-file">
+                    <input asp-for="Paper" class="form-control form-control-lg" />
+                    
+                </div>*@
+            </div>
         </div>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-9">
                 <div class="form-group" style="display: inline;">
                     <input id="Upload" type="submit" value="Upload" class="btn btn-success" />
@@ -46,3 +54,13 @@
         </div>
     </form>
 </div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var filename = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(filename);
+            });
+        })
+    </script>
+}

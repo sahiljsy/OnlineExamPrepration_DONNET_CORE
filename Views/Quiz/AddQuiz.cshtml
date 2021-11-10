@@ -9,7 +9,7 @@
         <div class="container ml-0 mr-0">
             <div class="row">
                 <div class="col-4">
-                    <select class="form-select form-select-lg" style="width: 80%; overflow-y: hidden; height: 80%" asp-for="Exam" asp-items="Html.GetEnumSelectList<exam>()">
+                    <select class="form-select form-select-lg form-control" style="width: 80%; overflow-y: hidden;" asp-for="Exam" asp-items="Html.GetEnumSelectList<exam>()">
                     </select>
                 </div>
                 <div class="col-8">
@@ -26,17 +26,16 @@
             <div class="col-9">
                 <div class="form-group">
                     <label asp-for="Question"><b>Question</b></label>
-                    <textarea id="Question" rows="2" style="width:100%" asp-for="Question"></textarea>
+                    <textarea id="Question" rows="2" class="form-control" style="width:100%" asp-for="Question"></textarea>
                     <span asp-validation-for="Question" class="text-danger"></span>
-                    <br />
                 </div>
             </div>
         </div><br />
-        <div class="row mb-4">
+        <div class="row mb-">
             <div class="col-5">
                 <div class="form-group">
                     Option A.
-                    <input id="A" type="text" class="ml-2" style="width:50%" asp-for="OptionA" /><br />
+                    <input id="A" type="text" class="form-control ml-2" style="width: 80%" asp-for="OptionA" />
                     <span asp-validation-for="OptionA" class="text-danger"></span>
 
                 </div>
@@ -45,26 +44,25 @@
             <div class="col-5">
                 <div class="form-group">
                     Option B.
-                    <input id="B" type="text" class="ml-2" style="width:50%" asp-for="OptionB" /><br />
+                    <input id="B" type="text" class="form-control ml-2" style="width: 80%" asp-for="OptionB" />
                     <span asp-validation-for="OptionB" class="text-danger"></span>
 
                 </div>
             </div>
         </div>
-        <div class="row mb-4">
+        <div class="row mb-2">
             <div class="col-5">
                 <div class="form-group">
                     Option C.
-                    <input id="C" type="text" class="ml-2" style="width:50%" asp-for="OptionC" /><br />
+                    <input id="C" type="text" class="form-control ml-2" style="width: 80%" asp-for="OptionC" />
                     <span asp-validation-for="OptionC" class="text-danger"></span>
-
                 </div>
             </div>
 
             <div class="col-5">
                 <div class="form-group">
                     Option D.
-                    <input id="D" type="text" class="ml-2" style="width:50%" asp-for="OptionD" /><br />
+                    <input id="D" type="text" class="form-control ml-2" style="width: 80%" asp-for="OptionD" />
                     <span asp-validation-for="OptionD" class="text-danger"></span>
 
                 </div>
@@ -74,14 +72,14 @@
             <div class="col-4">
                 <div class="form-group">
                     <label>ANSWER</label>
-                    <input id="ans" type="text" style="width: 90%" asp-for="Answer" />
+                    <input id="ans" type="text" class="form-control" style="width: 90%" asp-for="Answer" />
                     <span asp-validation-for="Answer" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-8">
                 <div class="form-group">
                     <label>Solution</label>
-                    <textarea id="sol" rows="2" style="width:100%" asp-for="Solution"></textarea>
+                    <textarea id="sol" rows="2" class="form-control" style="width:100%" asp-for="Solution"></textarea>
                     <span asp-validation-for="Solution" class="text-danger"></span>
                 </div>
             </div>

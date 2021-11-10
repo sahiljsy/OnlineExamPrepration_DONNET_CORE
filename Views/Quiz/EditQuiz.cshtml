@@ -3,20 +3,20 @@
     ViewData["Title"] = "Edit Quiz";
 }
 <div class="container">
-    <h1>Create New Quiz</h1>
+    <h1>Update Quiz</h1>
     <hr />
     <form method="post" asp-controller="Quiz" asp-action="EditQuiz">
         <div class="container ml-0 mr-0">
             <div class="row">
                 <div class="col-4">
-                    <select class="form-select form-select-lg" style="width: 80%; overflow-y: hidden; height: 80%" asp-for="Exam" asp-items="Html.GetEnumSelectList<exam>()">
+                    <select class="form-select form-select-lg form-control" style="width: 80%; overflow-y: hidden" asp-for="Exam" asp-items="Html.GetEnumSelectList<exam>()">
                     </select>
                 </div>
                 <div class="col-8">
-                    <div class="form-group">
-                        <input id="Easy" type="radio" name="Level" value="Easy" asp-for="Level" /><label for="Easy" asp-for="Level" class="mr-4">Easy</label>
-                        <input id="Medium" type="radio" name="Level" value="Medium" asp-for="Level" /><label for="Medium" asp-for="Level" class="mr-4">Medium</label>
-                        <input id="Hard" type="radio" name="Level" value="Hard" asp-for="Level" /><label for="Hard" asp-for="Level" class="mr-4">Hard</label>
+                    <div class="form-group form-check">
+                        <input id="Easy" type="radio" name="Level" value="Easy" asp-for="Level" class="form-check-input" /><label for="Easy" asp-for="Level" class="mr-4">Easy</label>
+                        <input id="Medium" type="radio" name="Level" value="Medium" asp-for="Level" class="form-check-input"/><label for="Medium" asp-for="Level" class="mr-4">Medium</label>
+                        <input id="Hard" type="radio" name="Level" value="Hard" asp-for="Level" class="form-check-input"/><label for="Hard" asp-for="Level" class="mr-4">Hard</label>
                     </div>
                 </div>
             </div>
@@ -26,17 +26,16 @@
             <div class="col-9">
                 <div class="form-group">
                     <label asp-for="Question"><b>Question</b></label>
-                    <textarea id="Question" rows="2" style="width:100%" asp-for="Question"></textarea>
-                    <span asp-validation-for="Question" class="text-danger"></span>
-                    <br />
+                    <textarea id="Question" class="form-control" rows="2" style="width:100%" asp-for="Question"></textarea>
+                    <span asp-validation-for="Question" class="text-danger"></span>                  
                 </div>
             </div>
         </div><br />
-        <div class="row mb-4">
+        <div class="row mb-2">
             <div class="col-5">
                 <div class="form-group">
                     Option A.
-                    <input id="A" type="text" class="ml-2" style="width:50%" asp-for="OptionA" /><br />
+                    <input id="A" type="text" class="form-control ml-2" style="width:80%" asp-for="OptionA" />
                     <span asp-validation-for="OptionA" class="text-danger"></span>
 
                 </div>
@@ -45,17 +44,17 @@
             <div class="col-5">
                 <div class="form-group">
                     Option B.
-                    <input id="B" type="text" class="ml-2" style="width:50%" asp-for="OptionB" /><br />
+                    <input id="B" type="text" class="form-control ml-2" style="width:80%" asp-for="OptionB" />
                     <span asp-validation-for="OptionB" class="text-danger"></span>
 
                 </div>
             </div>
         </div>
-        <div class="row mb-4">
+        <div class="row mb-2">
             <div class="col-5">
                 <div class="form-group">
                     Option C.
-                    <input id="C" type="text" class="ml-2" style="width:50%" asp-for="OptionC" /><br />
+                    <input id="C" type="text" class="form-control ml-2" style="width:80%" asp-for="OptionC" />
                     <span asp-validation-for="OptionC" class="text-danger"></span>
 
                 </div>
@@ -64,7 +63,7 @@
             <div class="col-5">
                 <div class="form-group">
                     Option D.
-                    <input id="D" type="text" class="ml-2" style="width:50%" asp-for="OptionD" /><br />
+                    <input id="D" type="text" class="form-control ml-2" style="width:80%" asp-for="OptionD" />
                     <span asp-validation-for="OptionD" class="text-danger"></span>
 
                 </div>
@@ -74,14 +73,14 @@
             <div class="col-4">
                 <div class="form-group">
                     <label>ANSWER</label>
-                    <input id="ans" type="text" style="width: 90%" asp-for="Answer" />
+                    <input id="ans" class="form-control" type="text" style="width: 90%" asp-for="Answer" />
                     <span asp-validation-for="Answer" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-8">
                 <div class="form-group">
                     <label>Solution</label>
-                    <textarea id="sol" rows="2" style="width:100%" asp-for="Solution"></textarea>
+                    <textarea id="sol" class="form-control" rows="2" style="width:100%" asp-for="Solution"></textarea>
                     <span asp-validation-for="Solution" class="text-danger"></span>
                 </div>
             </div>
@@ -90,7 +89,10 @@
             <div class="col-9">
                 <div class="form-group" style="display: inline;">
                     <input id="Submit" type="submit" value="Submit" class="btn btn-success mr-5" style="width:100px; height:45px" />
-                    <a asp-controller="Quiz" asp-action="DeleteQuiz" asp-route-id="@Model.Id" class="btn btn-danger mr-5" style="width: 100px; height: 45px">
+                    <a asp-controller="Quiz" asp-action="UpdateQuiz" class="btn btn-primary mr-5" style="width: 100px; height: 45px">
+                        Cancel
+                    </a>
+                    <a asp-controller="Quiz" asp-action="DeleteQuiz" asp-route-id="@Model.Id" class="btn btn-danger mr-5" style="width: 100px; height: 45px; float: right">
                         Delete
                     </a>
                 </div>

@@ -19,7 +19,7 @@ namespace OnlineExamPrepration.Models
             return paper;
         }
 
-        public void DeletePaper(string Exam, int year)
+        public string DeletePaper(string Exam, int year)
         {
             exam ex;
             if(Exam == "0")
@@ -35,11 +35,17 @@ namespace OnlineExamPrepration.Models
                 ex = exam.GATE;
             }
             IEnumerable<Paper> paper = from item in context.Papers where item.Year == year && item.Exam == ex select item;
-            foreach(var item in paper)
+            IEnumerable<Paper> lst = from item in context.Papers where item.Year == year && item.Exam == ex select item;
+            if (paper.Count().ToString() == "0")
+            {
+                return paper.Count().ToString();
+            }
+            foreach (var item in paper)
             {
                 context.Papers.Remove(item);
             }
             context.SaveChanges();
+            return "1";
         }
 
         public IEnumerable<Paper> GetNeetPapers()
