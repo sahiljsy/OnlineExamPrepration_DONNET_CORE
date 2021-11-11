@@ -14,6 +14,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Edit</th>
                                 <th>Exam</th>
                                 <th>Level</th>
                                 <th>Question</th>
@@ -23,7 +24,7 @@
                                 <th>OptionD</th>
                                 <th>Answer</th>
                                 <th>Solution</th>
-                                <th>Edit</th>
+
                             </tr>
                         </thead>
                     </table>
@@ -52,6 +53,9 @@
                     }],
                     "columns": [
                         { "data": "id", "name": "id", "autoWidth": true },
+                        {
+                            "render": function (data, type, full, meta) { return '<a class="btn btn-warning" href="/Quiz/EditQuiz/' + full.id + '">Edit</a>'; }
+                        },
                         { "data": "exam", "name": "exam", "autoWidth": true },
                         { "data": "level", "name": "level", "autoWidth": true },
                         { "data": "question", "name": "question", "autoWidth": true },
@@ -61,9 +65,7 @@
                         { "data": "optionD", "name": "optionD", "autoWidth": true },
                         { "data": "answer", "name": "answer", "autoWidth": true },
                         { "data": "solution", "name": "solution", "autoWidth": true },
-                        {
-                            "render": function (data, type, full, meta) { return '<a class="btn btn-warning" href="/Quiz/EditQuiz/' + full.id + '">Edit</a>'; }
-                        }
+                        
                     ]
 
                 });
