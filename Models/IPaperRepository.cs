@@ -8,7 +8,7 @@ namespace OnlineExamPrepration.Models
     public interface IPaperRepository
     {
         Paper AddPaper(Paper paper);
-        void DeletePaper(String Exam, int year);
+        string DeletePaper(String Exam, int year);
         IEnumerable<Paper> GetNeetPapers();
         IEnumerable<Paper> GetGatePapers();
         IEnumerable<Paper> GetJeePapers();

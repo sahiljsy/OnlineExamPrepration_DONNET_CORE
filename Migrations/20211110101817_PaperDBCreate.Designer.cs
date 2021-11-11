@@ -10,7 +10,7 @@ using OnlineExamPrepration.Models;
 namespace OnlineExamPrepration.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211108080509_PaperDBCreate")]
+    [Migration("20211110101817_PaperDBCreate")]
     partial class PaperDBCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -166,7 +166,8 @@ namespace OnlineExamPrepration.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Year")
+                    b.Property<int?>("Year")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
