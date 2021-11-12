@@ -326,15 +326,24 @@ namespace OnlineExamPrepration.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirm()
         {
-            var userId = await userManager.GetUserAsync(HttpContext.User);
-            await signInManager.SignOutAsync();
-            await userManager.DeleteAsync(userId);
-            if (userId.Profile_pic != null)
+            try
             {
-                string filepath = Path.Combine(hostingEnvironment.WebRootPath, "ProfilePic", userId.Profile_pic);
-                System.IO.File.Delete(filepath);
+                var userId = await userManager.GetUserAsync(HttpContext.User);
+                await signInManager.SignOutAsync();
+                if (userId.Profile_pic != null)
+                {
+                    string filepath = Path.Combine(hostingEnvironment.WebRootPath, "ProfilePic", userId.Profile_pic);
+                    System.IO.File.Delete(filepath);
+                }
+                await userManager.DeleteAsync(userId);
+
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         [HttpGet]

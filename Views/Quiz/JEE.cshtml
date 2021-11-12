@@ -1,15 +1,20 @@
 ﻿@model IEnumerable<OnlineExamPrepration.Models.QuizViewModel>
+@inject SignInManager<UserModel>  signInManager
+
 @{
     ViewData["Title"] = "Jee Quiz";
 }
 <div class="container">
     <h1 style="display: inline-block">MOCK QUIZ</h1>
-    <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Quiz" asp-action="AddQuiz" Style="float: right">
-        ADD QUIZ
-    </a>
-    <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Quiz" asp-action="UpdateQuiz" Style="float: right">
-        UPDATE QUIZ
-    </a>
+    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Quiz" asp-action="AddQuiz" Style="float: right">
+            ADD QUIZ
+        </a>
+        <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Quiz" asp-action="UpdateQuiz" Style="float: right">
+            UPDATE QUIZ
+        </a>
+    }
     <hr />
 
     <div class="btn-group" role="group" aria-label="Basic mixed styles example">

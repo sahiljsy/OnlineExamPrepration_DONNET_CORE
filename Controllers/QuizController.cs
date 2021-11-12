@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineExamPrepration.Models;
 using System;
@@ -21,12 +22,14 @@ namespace OnlineExamPrepration.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddQuiz()
         {
             return View();
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult EditQuiz(String id)
         {
             int Id = int.Parse(id);
@@ -98,6 +101,7 @@ namespace OnlineExamPrepration.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult EditQuiz(QuizViewModel quizViewModel)
         {
             if(ModelState.IsValid)
@@ -108,6 +112,7 @@ namespace OnlineExamPrepration.Controllers
             return View(quizViewModel);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteQuiz(int id)
         {
             //int Id = int.Parse(id);
@@ -116,6 +121,7 @@ namespace OnlineExamPrepration.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddQuiz(QuizViewModel quiz)
         {
             if(ModelState.IsValid)
@@ -126,6 +132,7 @@ namespace OnlineExamPrepration.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult UpdateQuiz()
         {
             return View();

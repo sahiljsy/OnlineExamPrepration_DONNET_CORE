@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using OnlineExamPrepration.Models;
 using System;
@@ -39,11 +40,13 @@ namespace OnlineExamPrepration.Controllers
         }
         
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddPaper()
         {
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddPaper(PaperViewModel model)
         {
             if (ModelState.IsValid)
@@ -81,11 +84,12 @@ namespace OnlineExamPrepration.Controllers
             //Send the File to Download.
             return File(bytes, "application/octet-stream", fileName);
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult DeletePaper()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult DeletePaper(int a)
         {

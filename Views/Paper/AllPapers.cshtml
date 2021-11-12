@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<OnlineExamPrepration.Models.Paper>
+@inject SignInManager<UserModel>  signInManager
+
 @{
     ViewData["Title"] = "Papers";
 }
@@ -6,12 +8,16 @@
     <h1 style="display:inline-block">
         PREVIOUS YEAR PAPER
     </h1>
-    <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Paper" asp-action="AddPaper" Style="float: right">
-        ADD PAPER
-    </a>
-    <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Paper" asp-action="DeletePaper" Style="float: right">
-        DELETE PAPER
-    </a><hr />
+    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Paper" asp-action="AddPaper" Style="float: right">
+            ADD PAPER
+        </a>
+        <a class="btn btn-dark mt-4 m-1" asp-area="" asp-controller="Paper" asp-action="DeletePaper" Style="float: right">
+            DELETE PAPER
+        </a>
+    }
+    <hr />
     <ItemTemplate>
         <table class="table table-bordered table-sm my-2">
             <thead>

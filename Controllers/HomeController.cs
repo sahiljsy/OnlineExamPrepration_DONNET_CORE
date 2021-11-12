@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OnlineExamPrepration.Models;
 using System;
@@ -25,7 +26,7 @@ namespace OnlineExamPrepration.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Display()
         {
             return View();
